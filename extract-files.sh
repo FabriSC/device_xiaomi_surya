@@ -54,6 +54,9 @@ if [ -z "${SRC}" ]; then
 fi
 
 function blob_fixup() {
+	vendor/lib64/camera/components/com.qti.node.watermark.so)
+            ${PATCHELF} --add-needed "libpiex_shim.so" "${2}"
+            ;;
     case "${1}" in
         vendor/lib64/hw/camera.qcom.so | vendor/lib64/libmegface.so | vendor/lib64/libFaceDetectpp-0.5.2.so)
             sed -i "s|libmegface.so|libfacedet.so|g" "${2}"
