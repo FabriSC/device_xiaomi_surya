@@ -15,9 +15,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/evolution_surya.mk
+    $(LOCAL_DIR)/blaze_surya.mk
 
 COMMON_LUNCH_CHOICES := \
-    evolution_surya-user \
-    evolution_surya-userdebug \
-    evolution_surya-eng
+    blaze_surya-user \
+    blaze_surya-userdebug \
+    blaze_surya-eng
