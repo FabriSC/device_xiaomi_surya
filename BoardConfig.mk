@@ -16,6 +16,7 @@
 
 # Broken rules
 SELINUX_IGNORE_NEVERALLOWS := true
+ALLOW_MISSING_DEPENDENCIES := true
 
 BOARD_VENDOR := xiaomi
 
