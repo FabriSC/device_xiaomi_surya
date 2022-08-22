@@ -19,7 +19,7 @@ if [[ -e vendor/xiaomi/surya ]];then
 cd $HOME/vendor/xiaomi/surya
 git pull
 else
-git clone https://github.com/Surya-Trees-SC/vendor_xiaomi_surya-sc $HOME/vendor/xiaomi/surya
+git clone https://github.com/xiaomeme-surya/android_vendor_xiaomi_surya $HOME/vendor/xiaomi/surya
 fi
 # hardware
 if [[ -e hardware/xiaomi ]];then
