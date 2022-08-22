@@ -30,3 +30,4 @@ git clone https://github.com/LineageOS/android_hardware_xiaomi.git -b lineage-19
 fi
 cd $HOME
 
+export RELAX_USES_LIBRARY_CHECK=true
