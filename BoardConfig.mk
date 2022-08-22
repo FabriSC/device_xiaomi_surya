@@ -100,28 +100,28 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_surya
 
 # Kernel
 BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_IMAGE_NAME := Image.gz
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DTBO := true
 
-TARGET_KERNEL_ADDITIONAL_FLAGS := \
-    HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
-TARGET_KERNEL_ADDITIONAL_FLAGS += \
-    LLVM=1
+BOARD_BOOTIMG_HEADER_VERSION := 2
+BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom
+TARGET_KERNEL_ADDITIONAL_FLAGS += AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip LD=ld.lld
+
+TARGET_KERNEL_APPEND_DTB := false
+TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_USE_LATEST_CLANG := true
+TARGET_KERNEL_CONFIG := surya_defconfig
+TARGET_KERNEL_SOURCE := kernel/xiaomi/surya
+
+BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0x880000
+BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom androidboot.console=ttyMSM0
 BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=a600000.dwc3
 BOARD_KERNEL_CMDLINE += service_locator.enable=1
 BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1
 BOARD_KERNEL_CMDLINE += loop.max_part=7
-BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
-
-BOARD_KERNEL_IMAGE_NAME := Image.gz
-TARGET_KERNEL_APPEND_DTB := false
-BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-BOARD_MKBOOTIMG_ARGS := --header_version 2
-
-TARGET_KERNEL_CONFIG := surya_defconfig
-TARGET_KERNEL_SOURCE := kernel/xiaomi/surya
+BOARD_KERNEL_CMDLINE += kpti=off
 
 # LMKD
 TARGET_LMKD_STATS_LOG := true
